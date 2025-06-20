@@ -17,7 +17,7 @@ def run(target):
     logging.info(f"Performing DNS Enumeration for {target}")
 
     record_types = ["A", "MX", "TXT", "NS"]
-    output = f"\n[ DNS Records ]\n"
+    output = "[ DNS Records ]\n"
 
     for rtype in record_types:
         records = query_dns(target, rtype)
@@ -28,5 +28,4 @@ def run(target):
         else:
             output += "- No records found or query failed.\n"
 
-    print(output)
     return output

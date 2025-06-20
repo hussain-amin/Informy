@@ -46,6 +46,11 @@ def main():
             report_sections["Technologies"] = tech_detect.run(args.target)
 
         if report_sections:
+            # Show report on terminal
+            print("\n\n===== Full Report =====")
+            for section, content in report_sections.items():
+                print(f"\n\n[ {section} ]\n{content}")
+
             report_path = save_report(args.target, report_sections)
             print(f"\n[+] Report saved to: {report_path}")
 

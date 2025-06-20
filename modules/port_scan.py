@@ -30,23 +30,21 @@ def scan_port(host, port):
 
 def run(target):
     logging.info(f"Starting port scan for {target}")
-    output = "\n[ Open Ports ]\n"
+    output = "[ Open Ports ]\n"
 
     try:
         ip = socket.gethostbyname(target)
     except socket.gaierror:
         logging.error(f"Could not resolve {target}")
-        output += "- Could not resolve domain.\n"
-        print(output)
-        return output
+        return output + "- Could not resolve domain.\n"
 
+    found_open = False
     for port, service in COMMON_PORTS.items():
         if scan_port(ip, port):
-            line = f"- Port {port} ({service}) is OPEN\n"
-            print(line.strip())
-            output += line
+            output += f"- Port {port} ({service}) is OPEN\n"
+            found_open = True
 
-    if output.strip() == "[ Open Ports ]":
+    if not found_open:
         output += "- No common ports found open.\n"
 
     return output

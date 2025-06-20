@@ -27,12 +27,11 @@ def run(domain):
     logging.info(f"Starting subdomain enumeration for {domain}")
     subdomains = from_crtsh(domain)
 
-    output = f"\n[ Subdomains Found via crt.sh ]\n"
+    output = "[ Subdomains Found via crt.sh ]\n"
     if subdomains:
         for sub in subdomains:
             output += f"- {sub}\n"
     else:
         output += "- No subdomains found.\n"
 
-    print(output)
     return output
