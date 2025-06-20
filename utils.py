@@ -40,7 +40,3 @@ def save_report(target, sections, output_dir="reports"):
     except Exception as e:
         logging.error(f"Failed to save report: {e}")
         return None
-
-# Optional: for HTML reports later
-# def save_html_report(target, sections, output_dir="reports"):
-#     ...
